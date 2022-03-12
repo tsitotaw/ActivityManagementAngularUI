@@ -1,0 +1,31 @@
+<div class="login_form">
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Login</legend>
+      <div>
+
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+        <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.dirty"
+          class="error_message">Username is Required </span>
+      </div>
+      <div>
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" formControlName="password">
+        </mat-form-field>
+
+        <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.dirty" class="error_message">
+          Password is Required </span>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
+          Login </button>
+      </div>
+    </fieldset>
+  </form>
+</div>

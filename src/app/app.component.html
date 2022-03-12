@@ -1,0 +1,25 @@
+<mat-toolbar>
+
+  <button mat-icon-button [routerLink]="['home']">
+    <mat-icon [routerLink]="['home']">home</mat-icon>
+  </button>
+  <span>My CS 572 App</span>
+  <span class="example-spacer"></span>
+
+  <button mat-raised-button color="primary" [routerLink]="['protected']">
+    Protected
+  </button>
+  &nbsp; &nbsp;
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="settingsMenu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #settingsMenu>
+    <menu mat-menu-item [routerLink]="['login']">Login</menu>
+    <menu mat-menu-item [routerLink]="['signup']">SignUp</menu>
+    <menu mat-menu-item (click)="logout()">Logout</menu>
+  </mat-menu>
+
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
