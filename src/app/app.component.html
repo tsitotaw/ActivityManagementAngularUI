@@ -6,8 +6,16 @@
   <span>Activity Tracking System</span>
   <span class="example-spacer"></span>
 
-  <button mat-raised-button color="primary" [routerLink]="['protected']">
-    Protected
+  <button mat-raised-button color="primary" [routerLink]="['activity/type']">
+    Type
+  </button>
+  &nbsp; &nbsp;
+  <button mat-raised-button color="primary" [routerLink]="['activity/category']">
+    Category
+  </button>
+  &nbsp; &nbsp;
+  <button mat-raised-button color="primary" [routerLink]="['activity/subcategory']">
+    SubCategory
   </button>
   &nbsp; &nbsp;
   <button mat-raised-button color="primary" [matMenuTriggerFor]="settingsMenu">
@@ -22,4 +30,6 @@
 
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<div class="content-placeholder">
+  <router-outlet></router-outlet>
+</div>

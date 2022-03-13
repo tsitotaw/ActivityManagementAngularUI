@@ -35,6 +35,7 @@ import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
       { path:'login', component:LoginComponent},
       { path:'signup', component:SignupComponent},
       { path:'protected', component:ProtectedComponent},
+      { path:'activity', loadChildren: () => import('./activity/activity.module').then(m=> m.ActivityModule)},
       { path: '**', redirectTo: 'home', pathMatch:'full'}
     ]),
     ReactiveFormsModule,
