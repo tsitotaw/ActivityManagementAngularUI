@@ -1,0 +1,21 @@
+.type_form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+  .type-search-form-center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .mat-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px !important;
+  }
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  .input-width {
+    width: 400px;
+  }
