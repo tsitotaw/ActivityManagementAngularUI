@@ -6,7 +6,7 @@
       <div>
 
         <mat-form-field appearance="legacy" class="input-width">
-          <mat-label>Username</mat-label>
+          <mat-label>UserName</mat-label>
           <input matInput formControlName="username">
         </mat-form-field>
         <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.dirty"
@@ -24,7 +24,7 @@
 
       <div>
         <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
-          LOGIN </button>
+          Login </button>
       </div>
     </fieldset>
   </form>
