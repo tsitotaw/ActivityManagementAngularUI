@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedService } from '../common/shared.service';
 import { UserServiceService } from '../common/user-service.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private sharedService: SharedService) {
     this.loginForm = fb.group({
       'username': ['', Validators.required],
       'password': ['', Validators.required]
@@ -33,15 +35,14 @@ export class LoginComponent implements OnInit {
    * I need a service
    */
   onSubmit() {
-    let body: any = {
-      username: "user",
-      password: "1234"
-    }
-    this.httpClient.post('http://localhost:4001/api/users/login', body).subscribe(data => {
+    this.httpClient.post('http://localhost:5000/api/users/login', this.loginForm.value).subscribe(data => {
       let token:any = data;
-
+      this.sharedService.IS_USER_AUTHENTICATED = true;
+      /**
+       * Also Update User Info Object and display Welcome
+       */
       localStorage.setItem("token", token.authToken);
-      this.router.navigate(['home']);
+      this.router.navigate(['activity','type']);
     });
   }
 

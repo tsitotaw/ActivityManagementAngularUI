@@ -19,6 +19,7 @@ import { UserServiceService} from './common/user-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
+import { TokenGuard } from './token-guard.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,10 @@ import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
       { path:'login', component:LoginComponent},
       { path:'signup', component:SignupComponent},
       { path:'protected', component:ProtectedComponent},
-      { path:'activity', loadChildren: () => import('./activity/activity.module').then(m=> m.ActivityModule)},
+      { path:'activity',
+        loadChildren: () => import('./activity/activity.module').then(m=> m.ActivityModule),
+        canActivate:[TokenGuard]
+    },
       { path: '**', redirectTo: 'home', pathMatch:'full'}
     ]),
     ReactiveFormsModule,

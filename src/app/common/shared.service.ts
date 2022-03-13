@@ -7,5 +7,6 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   SERVER_API_URL:string = "http://localhost:5000/api/";
+  IS_USER_AUTHENTICATED:boolean = false;
   constructor() {}
 }
