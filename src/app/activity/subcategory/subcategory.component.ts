@@ -22,7 +22,7 @@ export class SubcategoryComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.httpClient.get(this.sharedService.SERVER_API_URL + "activities").subscribe(data => {
+    this.httpClient.get(this.sharedService.GET_ACTIVITY_SUBCATAGORY + "activities").subscribe(data => {
       this.dataSource = this.transformDataSource(data);
     });
   }
