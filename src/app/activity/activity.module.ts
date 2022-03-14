@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { TypeDetailComponent } from './type/detail/detail.component';
 import { CreateTypeComponent } from './type/create-type/create-type.component';
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
   declarations: [
     TypeComponent,
@@ -36,7 +38,8 @@ import { CreateTypeComponent } from './type/create-type/create-type.component';
     MatIconModule,
     MatMenuModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ]
 })
 export class ActivityModule { }
