@@ -68,7 +68,7 @@ export class CategoryComponent implements OnInit {
   }
 
   goToDetailView(id:String){
-    this.router.navigate(['activity','type', id]);
+    this.router.navigate(['activity','category', id]);
   }
 
 }
