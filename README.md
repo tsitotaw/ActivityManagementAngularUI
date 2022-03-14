@@ -1,3 +1,8 @@
+# About
+
+Activity Tracking System
+‘Company-X’ needs a computer system to track its list of activities. A given activity comes from a hierarchy of ActivityType, ActivityCategory and ActivitySubCategory; where an Activity Type has more than one Activity Categories, and an ActivityCategory, in turn will have more than one ActivitySubCategories. It is to be noted that the organization typically manages dozens of activity types.
+
 # UserUI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
