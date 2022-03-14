@@ -21,4 +21,8 @@ export class ActivityService {
   updateActivityType(typeId:string, typeDetail:[string,string]){
     return this.localHttpClient.put(this.constantHelperService.SERVER_API_URL + "activities/" + typeId, typeDetail);
   }
+
+  saveActivityType(typeDetail:[string,string]){
+    return this.localHttpClient.post(this.constantHelperService.SERVER_API_URL + "activities", typeDetail);
+  }
 }

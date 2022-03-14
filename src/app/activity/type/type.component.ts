@@ -33,22 +33,13 @@ export class TypeComponent implements OnInit {
     return data["data"];
   }
 
-  /**
-   * I need to recieve the username and password and
-   * do a post request to the server api
-   *
-   * I need a service
-   */
-   onSubmit() {
-    let body: any = {
-      username: "user",
-      password: "1234"
-    }
-
-  }
-
   goToDetailView(id:String){
     this.router.navigate(['activity','type', id]);
+  }
+
+  goToAddView($event:any){
+    this.router.navigate(["activity","type","create"]);
+    $event.stopPropagation();
   }
 
 }

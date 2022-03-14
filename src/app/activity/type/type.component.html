@@ -1,5 +1,5 @@
 <div class="type_form">
-  <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="typeForm">
     <fieldset>
       <legend>Activity Type</legend>
 
@@ -16,10 +16,6 @@
       &nbsp;
       <div class="table-center">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -37,6 +33,9 @@
             (click)="goToDetailView(row._id);"></tr>
         </table>
 
+        <button mat-raised-button color="primary" id="loginBtn" type="button" class="pull-right" class="add-type-btn"
+          (click)="goToAddView($event)">
+          Create New Type </button>
 
       </div>
 
