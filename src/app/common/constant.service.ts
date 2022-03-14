@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ConstantHelperService {
 
   SERVER_API_URL:string = "http://localhost:5000/api/";
-  IS_USER_AUTHENTICATED:boolean = true;
+  IS_USER_AUTHENTICATED:boolean = false;
   constructor() {}
 
 }

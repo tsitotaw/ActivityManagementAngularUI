@@ -26,8 +26,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.constantHelperService.IS_USER_AUTHENTICATED){
+      this.router.navigate(['activity','type'])
+    }
   }
 
+  gotoSignup(){
+    this.router.navigate(['signup']);
+  }
   /**
    * I need to recieve the username and password and
    * do a post request to the server api
