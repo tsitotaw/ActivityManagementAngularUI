@@ -7,9 +7,9 @@
 
         <mat-form-field appearance="legacy" class="input-width">
           <mat-label>UserName</mat-label>
-          <input matInput formControlName="username">
+          <input matInput formControlName="userName">
         </mat-form-field>
-        <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.dirty"
+        <span *ngIf="!loginForm.get('userName')?.valid && loginForm.get('username')?.dirty"
           class="error_message">Username is Required </span>
       </div>
       <div>
@@ -23,8 +23,11 @@
       </div>
 
       <div>
-        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
-          Login </button>
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="input-btn-width">
+          Login </button> &nbsp;&nbsp;
+        <button mat-raised-button color="primary" id="signupBtn" (click)="gotoSignup()"
+          class="pull-right input-btn-width">
+          Sign Up </button>
       </div>
     </fieldset>
   </form>

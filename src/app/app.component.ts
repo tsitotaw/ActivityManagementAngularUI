@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConstantHelperService } from './common/constant.service';
 
@@ -9,12 +9,16 @@ import { ConstantHelperService } from './common/constant.service';
 })
 export class AppComponent {
   title = 'UserUI';
+  loggedInUserFullName:String = "";
 
-  constructor(private router: Router, private constantHelperService:ConstantHelperService){}
+  constructor(private router: Router, public constantHelperService:ConstantHelperService){
+
+  }
 
   logout(){
     localStorage.removeItem("token");
     this.constantHelperService.IS_USER_AUTHENTICATED = false;
+    this.constantHelperService.LOGGED_IN_USER = {};
     this.router.navigate(['login']);
   }
 }
