@@ -24,3 +24,9 @@ tr.example-element-row:not(.example-expanded-row):hover {
   margin-right: auto;
   width: 30%;
 }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}

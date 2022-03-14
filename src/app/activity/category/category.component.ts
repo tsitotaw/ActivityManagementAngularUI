@@ -28,11 +28,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities/categories").subscribe(data => {
-    //   this.dataSource = this.transformDataSource(data);
-    //   // this.types = Object.assign([], this.dataSource);
-    // });
-
     this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
       this.types = this.transformDataSource(data);
       this.firstCategory = {
@@ -53,12 +48,6 @@ export class CategoryComponent implements OnInit {
     return data["data"];
   }
 
-  /**
-   * I need to recieve the username and password and
-   * do a post request to the server api
-   *
-   * I need a service
-   */
    onSubmit() {
     let body: any = {
       username: "user",
@@ -69,6 +58,11 @@ export class CategoryComponent implements OnInit {
 
   goToDetailView(id:String){
     this.router.navigate(['activity','category', id]);
+  }
+
+  goToAddView($event:any){
+    this.router.navigate(["activity","category","create"]);
+    $event.stopPropagation();
   }
 
 }
