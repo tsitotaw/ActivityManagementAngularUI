@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
        */
       const helperJwtService = new JwtHelperService();
       const decodedToken = helperJwtService.decodeToken(token.authToken);
-      if(decodedToken == null){
+      if(token.authToken == false){
+        alert("Invalid UserName or password. Please try again")
         return;
       }
       this.constantHelperService.LOGGED_IN_USER = decodedToken;

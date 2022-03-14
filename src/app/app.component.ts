@@ -18,6 +18,7 @@ export class AppComponent {
   logout(){
     localStorage.removeItem("token");
     this.constantHelperService.IS_USER_AUTHENTICATED = false;
+    this.constantHelperService.LOGGED_IN_USER = {};
     this.router.navigate(['login']);
   }
 }
