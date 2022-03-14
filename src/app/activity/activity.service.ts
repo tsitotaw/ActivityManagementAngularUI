@@ -18,6 +18,10 @@ export class ActivityService {
     return this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities/"+ typeId);
   }
 
+  getActivityByName(name: string){
+    return this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities?name="+ name);
+  }
+
   updateActivityType(typeId:string, typeDetail:[string,string]){
     return this.localHttpClient.put(this.constantHelperService.SERVER_API_URL + "activities/" + typeId, typeDetail);
   }

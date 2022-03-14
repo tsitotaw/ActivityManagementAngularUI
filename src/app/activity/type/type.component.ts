@@ -33,6 +33,12 @@ export class TypeComponent implements OnInit {
     return data["data"];
   }
 
+  searchType(){
+    this.activityService.getActivityByName(this.typeForm.value.name).subscribe(data => {
+      this.dataSource = this.transformDataSource(data);
+    });
+  }
+
   goToDetailView(id:String){
     this.router.navigate(['activity','type', id]);
   }
