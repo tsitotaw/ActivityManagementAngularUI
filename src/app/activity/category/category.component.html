@@ -4,7 +4,7 @@
       <legend>Categories</legend>
 
 
-      <div class="category-type-center"> 
+      <div class="category-type-center">
         <mat-form-field appearance="legacy">
           <mat-label>Categories</mat-label>
           <mat-select (selectionChange)="loadCategory($event)">
@@ -38,13 +38,13 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
-            (click)="goToDetailView(row._id);"></tr>
+            (click)="goToDetailView(row);"></tr>
         </table>
 
         <br>
 
-        <button mat-raised-button color="primary" id="createCategory" type="button" class="pull-center" class="add-type-btn"
-        (click)="goToAddView($event)">
+        <button mat-raised-button color="primary" id="createCategory" type="button" class="pull-center"
+          class="add-type-btn" (click)="goToAddView($event)">
           Create Category </button>
 
       </div>

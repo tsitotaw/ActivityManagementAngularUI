@@ -35,7 +35,7 @@ import { DetailComponent } from './category/detail/detail.component';
       {path: 'type/:id', component:TypeDetailComponent},
       {path: 'category', component:CategoryComponent},
       {path: 'category/create', component:CreateCategoryComponent},
-      {path: 'category/:id', component:DetailComponent},
+      {path: 'category/:typeid/detail/:categoryid', component:DetailComponent},
       {path: 'subcategory', component:SubcategoryComponent},
     ]),
     ReactiveFormsModule,

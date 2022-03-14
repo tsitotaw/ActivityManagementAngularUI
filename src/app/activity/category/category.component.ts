@@ -17,6 +17,7 @@ export class CategoryComponent implements OnInit {
   dataSource:ActivityType[] = [];
 
   types: any[] = [];
+  selectedTypeId:string="";
   firstCategory:any={};
   typeForm!: FormGroup
   constructor(private fb:FormBuilder, private localHttpClient: LocalHttpClient,
@@ -35,13 +36,14 @@ export class CategoryComponent implements OnInit {
           categories: this.types[0].categories
         }
       }
+      this.selectedTypeId = this.types[0]._id;
       this.loadCategory(this.firstCategory);
     });
 
   }
   loadCategory(data:any){
     this.dataSource = data?.value?.categories;
-
+    this.selectedTypeId = (data?.value?._id) ? data.value._id : this.selectedTypeId;
   }
 
   transformDataSource(data:any){
@@ -56,9 +58,10 @@ export class CategoryComponent implements OnInit {
 
   }
 
-  goToDetailView(id:String){
-    this.router.navigate(['activity','category', id]);
+  goToDetailView(category:any){
+    this.router.navigate(['activity','category',this.selectedTypeId,"detail",category._id]);
   }
+
 
   goToAddView($event:any){
     this.router.navigate(["activity","category","create"]);
