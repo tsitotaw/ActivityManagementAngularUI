@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +12,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { ProtectedComponent } from './protected/protected.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -23,23 +21,20 @@ import { TokenGuard } from './token-guard.guard';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
-    HomeComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path:'', redirectTo:'home', pathMatch:'full'},
-      { path:'home', component:HomeComponent},
+      { path:'', redirectTo:'login', pathMatch:'full'},
       { path:'login', component:LoginComponent},
       { path:'signup', component:SignupComponent},
-      { path:'protected', component:ProtectedComponent},
       { path:'activity',
         loadChildren: () => import('./activity/activity.module').then(m=> m.ActivityModule),
         canActivate:[TokenGuard]
     },
-      { path: '**', redirectTo: 'home', pathMatch:'full'}
+      { path: '**', redirectTo: 'login', pathMatch:'full'}
     ]),
     ReactiveFormsModule,
     MatToolbarModule,

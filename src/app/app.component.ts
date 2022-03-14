@@ -10,7 +10,7 @@ import { ConstantHelperService } from './common/constant.service';
 export class AppComponent {
   title = 'UserUI';
 
-  constructor(private router: Router, private constantHelperService:ConstantHelperService){}
+  constructor(private router: Router, public constantHelperService:ConstantHelperService){}
 
   logout(){
     localStorage.removeItem("token");

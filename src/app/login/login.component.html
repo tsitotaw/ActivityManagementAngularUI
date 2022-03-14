@@ -23,8 +23,11 @@
       </div>
 
       <div>
-        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
-          Login </button>
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="input-btn-width">
+          Login </button> &nbsp;&nbsp;
+        <button mat-raised-button color="primary" id="signupBtn" (click)="gotoSignup()"
+          class="pull-right input-btn-width">
+          Sign Up </button>
       </div>
     </fieldset>
   </form>

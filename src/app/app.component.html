@@ -22,9 +22,9 @@
     <mat-icon>settings</mat-icon>
   </button>
   <mat-menu #settingsMenu>
-    <menu mat-menu-item [routerLink]="['login']">Login</menu>
-    <menu mat-menu-item [routerLink]="['signup']">SignUp</menu>
-    <menu mat-menu-item (click)="logout()">Logout</menu>
+    <menu mat-menu-item [routerLink]="['login']" *ngIf="!constantHelperService.IS_USER_AUTHENTICATED">Login</menu>
+    <menu mat-menu-item [routerLink]="['signup']" *ngIf="!constantHelperService.IS_USER_AUTHENTICATED">SignUp</menu>
+    <menu mat-menu-item (click)="logout()" *ngIf="constantHelperService.IS_USER_AUTHENTICATED">Logout</menu>
   </mat-menu>
 
 

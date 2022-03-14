@@ -1,1 +1,65 @@
-<p>signup works!</p>
+<div class="login_form">
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+    <fieldset>
+      <legend>Sign up</legend>
+      <div>
+
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <span *ngIf="!signUpForm.get('firstName')?.valid && signUpForm.get('firstName')?.dirty"
+          class="error_message">First Name is Required </span>
+      </div>
+
+      <div>
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>UserName</mat-label>
+          <input matInput formControlName="userName">
+        </mat-form-field>
+        <span *ngIf="!signUpForm.get('userName')?.valid && signUpForm.get('userName')?.dirty"
+          class="error_message">Username is Required </span>
+      </div>
+      <div>
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" formControlName="password">
+        </mat-form-field>
+
+        <span *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.dirty" class="error_message">
+          Password is Required </span>
+      </div>
+      <div>
+        <mat-form-field appearance="legacy" class="input-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" id="confirmPassword" formControlName="confirmPassword">
+        </mat-form-field>
+
+        <span *ngIf="!signUpForm.get('password')?.valid && signUpForm.get('password')?.dirty" class="error_message">
+          Password is Required </span>
+
+        <span *ngIf="passwordNotMatch" class="error_message">
+          Passwords do not Match </span>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="input-area-width">
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="address" rows="6"></textarea>
+        </mat-form-field>
+      </div>
+      &nbsp;&nbsp;&nbsp;
+      <div>
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
+          Signup </button>
+      </div>
+    </fieldset>
+  </form>
+</div>

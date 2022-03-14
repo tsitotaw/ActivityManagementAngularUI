@@ -19,3 +19,6 @@
 .error_message {
   color: red;
 }
+.input-btn-width {
+  width: 200px;
+}
