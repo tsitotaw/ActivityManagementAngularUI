@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
    */
    onSignUp():any {
 
-    if(!this.comparePassword()){
+    if(!this.comparePassword() || this.signUpForm.status == "INVALID"){
       return false;
     }
 
