@@ -29,7 +29,7 @@ export class CreateCategoryComponent implements OnInit {
   ngOnInit(): void {
 
     this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
-      this.types = this.transformDataSource(data);  
+      this.types = this.transformDataSource(data);
     });
 
     // this.firstCategory = {
@@ -46,14 +46,15 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   loadCategory(data:any){
-    this.dataSource = data?.value?.categories;
+    this.typeId = data?.value?._id;
+    // this.dataSource = data?.value?.categories;
 
   }
 
   onCreateTypeClicked() {
     console.log(this.dataSource)
 
-    this.activityService.saveActivityCategory('622d8e3b76a41f6e5ec2488f',this.createForm.value).subscribe(data => {
+    this.activityService.saveActivityCategory(this.typeId,this.createForm.value).subscribe(data => {
       alert("Successfully Updated!")
       this.router.navigate(["activity","type"]);
     });
