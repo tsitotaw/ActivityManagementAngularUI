@@ -13,6 +13,7 @@ import { ConstantHelperService } from 'src/app/common/constant.service';
 export class DetailComponent implements OnInit {
   detailForm!: FormGroup;
   categoryId:any;
+  typeId: string = "";
 
   constructor(private fb:FormBuilder, private activityService: ActivityService,
     private constantHelperService:ConstantHelperService, private router: Router, private activatedRoute:ActivatedRoute) {
@@ -22,12 +23,13 @@ export class DetailComponent implements OnInit {
       });
 
       this.activatedRoute.params.subscribe(param =>{
-        this.categoryId = param["id"];
+        this.typeId = param["id"];
+        this.categoryId = param["categoryid"];
       });
     }
 
-  ngOnInit(): void { 
-    this.activityService.getCategoryById(this.categoryId).subscribe(data => {
+  ngOnInit(): void {
+    this.activityService.getCategoryById(this.typeId, this.categoryId).subscribe(data => {
       console.log(data)
       let detailType:any = this.transformDataSource(data);
       this.detailForm.setValue({
