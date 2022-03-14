@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { SharedService } from './common/shared.service';
+import { ConstantHelperService } from './common/constant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenGuard implements CanActivate {
-  constructor(private sharedService: SharedService){
+  constructor(private constantHelperService:ConstantHelperService){
 
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      return this.sharedService.IS_USER_AUTHENTICATED;
+      return this.constantHelperService.IS_USER_AUTHENTICATED;
   }
 
 }

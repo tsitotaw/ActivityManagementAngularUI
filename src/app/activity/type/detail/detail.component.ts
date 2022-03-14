@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedService } from 'src/app/common/shared.service';
+import { ConstantHelperService } from 'src/app/common/constant.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,7 +14,7 @@ export class TypeDetailComponent implements OnInit {
   typeId:any;
 
   constructor(private fb:FormBuilder, private httpClient: HttpClient,
-    private sharedService: SharedService, private router: Router, private activatedRoute:ActivatedRoute) {
+    private constantHelperService:ConstantHelperService, private router: Router, private activatedRoute:ActivatedRoute) {
       this.detailForm = fb.group({
         'name': [''],
         'code': ['']
@@ -26,7 +26,7 @@ export class TypeDetailComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.httpClient.get(this.sharedService.SERVER_API_URL + "activities/"+ this.typeId).subscribe(data => {
+    this.httpClient.get(this.constantHelperService.SERVER_API_URL + "activities/"+ this.typeId).subscribe(data => {
       let detailType:any = this.transformDataSource(data);
       this.detailForm.setValue({
         name: detailType.name,
@@ -44,7 +44,7 @@ export class TypeDetailComponent implements OnInit {
      */
     console.log(this.detailForm.value);
 
-    this.httpClient.put(this.sharedService.SERVER_API_URL + "activities/"+ this.typeId ,this.detailForm.value).subscribe(data => {
+    this.httpClient.put(this.constantHelperService.SERVER_API_URL + "activities/"+ this.typeId ,this.detailForm.value).subscribe(data => {
       alert("Successfully Updated!")
     });
 

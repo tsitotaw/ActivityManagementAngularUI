@@ -15,7 +15,6 @@ import {MatInputModule} from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ProtectedComponent } from './protected/protected.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserServiceService} from './common/user-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedService } from './common/shared.service';
+import { ConstantHelperService } from './common/constant.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,11 @@ import { SharedService } from './common/shared.service';
 export class AppComponent {
   title = 'UserUI';
 
-  constructor(private router: Router, private sharedService:SharedService){}
+  constructor(private router: Router, private constantHelperService:ConstantHelperService){}
 
   logout(){
     localStorage.removeItem("token");
-    this.sharedService.IS_USER_AUTHENTICATED = false;
+    this.constantHelperService.IS_USER_AUTHENTICATED = false;
     this.router.navigate(['login']);
   }
 }

@@ -12,7 +12,6 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { TypeDetailComponent } from './type/detail/detail.component';
-
 @NgModule({
   declarations: [
     TypeComponent,

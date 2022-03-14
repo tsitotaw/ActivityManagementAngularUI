@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedService } from '../common/shared.service';
+import { ConstantHelperService } from '../common/constant.service';
 import { UserServiceService } from '../common/user-service.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private sharedService: SharedService) {
+    private constantHelperService:ConstantHelperService) {
     this.loginForm = fb.group({
       'username': ['', Validators.required],
       'password': ['', Validators.required]
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.httpClient.post('http://localhost:5000/api/users/login', this.loginForm.value).subscribe(data => {
       let token:any = data;
-      this.sharedService.IS_USER_AUTHENTICATED = true;
+      this.constantHelperService.IS_USER_AUTHENTICATED = true;
       /**
        * Also Update User Info Object and display Welcome
        */
