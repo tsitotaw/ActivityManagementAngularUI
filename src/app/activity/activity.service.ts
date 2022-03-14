@@ -18,6 +18,6 @@ export class ActivityService {
   }
 
   updateActivityType(typeId:string, typeDetail:[string,string]){
-
+    return this.httpClient.put(this.constantHelperService.SERVER_API_URL + "activities/" + typeId, typeDetail);
   }
 }
