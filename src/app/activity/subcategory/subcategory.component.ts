@@ -1,3 +1,4 @@
+import { LocalHttpClient } from './../../local-http-client.service';
 import { ActivityType } from './../type/ActivityType';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,10 +12,12 @@ import { ConstantHelperService } from 'src/app/common/constant.service';
   styleUrls: ['./subcategory.component.css']
 })
 export class SubcategoryComponent implements OnInit {
+  types: any[] = [];
+  categories:any[]=[];
   displayedColumns: string[] = ['name', 'code','uom'];
-  dataSource:ActivityType[] = [];
-  typeForm!: FormGroup
-  constructor(private fb:FormBuilder, private httpClient: HttpClient,
+  dataSource:any[] = [];
+  typeForm!: FormGroup;
+  constructor(private fb:FormBuilder, private localHttpClient: LocalHttpClient,
     private constantHelperService: ConstantHelperService, private router: Router) {
       this.typeForm = fb.group({
         'name': ['']
@@ -22,8 +25,15 @@ export class SubcategoryComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.httpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
-      this.dataSource = this.transformDataSource(data);
+    // this.httpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
+    //   this.dataSource = this.transformDataSource(data);
+    // });
+    this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
+      this.types = this.transformDataSource(data);
+      
+      // this.loadCategory(this.categories);
+      
+      // this.loadSubcategory(this.dataSource)
     });
   }
   transformDataSource(data:any){
@@ -37,8 +47,16 @@ export class SubcategoryComponent implements OnInit {
 
   }
 
+  loadCategory(type:any){
+    this.categories = type.value.categories;
+  }
+
+  loadSubcategory(data:any){
+    this.dataSource = data.value.subcategories;
+  }
+
   goToDetailView(id:String){
-    this.router.navigate(['activity','type', id]);
+    this.router.navigate(['activity','category','subcategory' ,id]);
   }
 
 }
