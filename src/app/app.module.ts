@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
 import { TokenGuard } from './token-guard.guard';
+import { JwtModule } from "@auth0/angular-jwt";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { TokenGuard } from './token-guard.guard';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass: MyInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]

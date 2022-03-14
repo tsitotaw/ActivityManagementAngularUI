@@ -7,9 +7,9 @@
 
         <mat-form-field appearance="legacy" class="input-width">
           <mat-label>UserName</mat-label>
-          <input matInput formControlName="username">
+          <input matInput formControlName="userName">
         </mat-form-field>
-        <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.dirty"
+        <span *ngIf="!loginForm.get('userName')?.valid && loginForm.get('username')?.dirty"
           class="error_message">Username is Required </span>
       </div>
       <div>
