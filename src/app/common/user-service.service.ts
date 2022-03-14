@@ -1,16 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalHttpClient } from '../local-http-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  constructor(private httpClient:HttpClient) {}
+  constructor(private localHttpClient:LocalHttpClient) {}
 
   authenticate(username:string, password:string):any{
-    this.httpClient.post('localhost:4001/api/users/login', {username, password});
-
-
+    this.localHttpClient.post('localhost:4001/api/users/login', {username, password});
   }
 }

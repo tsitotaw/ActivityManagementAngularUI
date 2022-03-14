@@ -19,3 +19,6 @@ tr.example-element-row:not(.example-expanded-row):hover {
 .input-width {
   width: 400px;
 }
+.add-type-btn {
+  float: right;
+}

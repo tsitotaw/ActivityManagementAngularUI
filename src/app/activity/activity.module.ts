@@ -12,17 +12,20 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { TypeDetailComponent } from './type/detail/detail.component';
+import { CreateTypeComponent } from './type/create-type/create-type.component';
 @NgModule({
   declarations: [
     TypeComponent,
     CategoryComponent,
     SubcategoryComponent,
-    TypeDetailComponent
+    TypeDetailComponent,
+    CreateTypeComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path: 'type', component:TypeComponent},
+      {path: 'type/create', component:CreateTypeComponent},
       {path: 'type/:id', component:TypeDetailComponent},
       {path: 'category', component:CategoryComponent},
       {path: 'subcategory', component:SubcategoryComponent},
