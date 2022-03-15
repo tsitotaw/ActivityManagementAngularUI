@@ -1,0 +1,34 @@
+<div class="type_detail_view">
+    <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <legend>Activity Subcategory Detail</legend>
+  
+        <div class="type_detail_view">
+          <mat-form-field appearance="legacy" class="input-width">
+            <mat-label>name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+        </div>
+  
+        <div class="type_detail_view">
+          <mat-form-field appearance="legacy" class="input-width">
+            <mat-label>code</mat-label>
+            <input matInput formControlName="code">
+          </mat-form-field>
+        </div>
+
+        <div class="type_detail_view">
+            <mat-form-field appearance="legacy" class="input-width">
+              <mat-label>uom</mat-label>
+              <input matInput formControlName="uom">
+            </mat-form-field>
+          </div>
+  
+        <div class="type_detail_view">
+          <button mat-raised-button color="primary" id="updateBtn" type="submit" class="pull-right" class="input-width">
+            Update Subcategory</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  

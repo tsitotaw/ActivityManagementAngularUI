@@ -17,6 +17,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
 import { DetailComponent } from './category/detail/detail.component';
 
+import { DetailSubCategoryComponent } from './subcategory/detail/detail-sub-category.component';
+
 @NgModule({
   declarations: [
     TypeComponent,
@@ -25,7 +27,8 @@ import { DetailComponent } from './category/detail/detail.component';
     TypeDetailComponent,
     CreateTypeComponent,
     CreateCategoryComponent,
-    DetailComponent
+    DetailComponent,
+    DetailSubCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +40,7 @@ import { DetailComponent } from './category/detail/detail.component';
       {path: 'category/create', component:CreateCategoryComponent},
       {path: 'category/:typeid/detail/:categoryid', component:DetailComponent},
       {path: 'subcategory', component:SubcategoryComponent},
+      {path: 'subcategory/:typeid/detail/:categoryid/subcategory/:subcategoryid', component:DetailSubCategoryComponent},
     ]),
     ReactiveFormsModule,
     MatButtonModule,
