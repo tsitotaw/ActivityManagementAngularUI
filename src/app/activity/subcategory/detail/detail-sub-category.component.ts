@@ -69,9 +69,10 @@ export class DetailSubCategoryComponent implements OnInit {
      */
     console.log(this.detailForm.value);
 
-    this.activityService.updateActivityType(this.typeId,this.detailForm.value).subscribe(data => {
-      alert("Successfully Updated!")
-    });
+    // this.activityService.updateActivitySubCategory(this.typeId, this.categoryId, this.subcategoryId, this.detailForm.value).subscribe(data => {
+    //   alert("Successfully Updated!");
+
+    // });
 
   }
 }
