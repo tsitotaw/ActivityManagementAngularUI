@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackingComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log("HOLLA");
+  }
 
   ngOnInit(): void {
   }
