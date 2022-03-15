@@ -16,6 +16,10 @@ export class SubcategoryComponent implements OnInit {
   categories:any[]=[];
   displayedColumns: string[] = ['name', 'code','uom'];
   dataSource:any[] = [];
+  selectedTypeId:string="";
+  selectedCategoryId:string="";
+  selectedSubCategoryId:string="";
+
   typeForm!: FormGroup;
   constructor(private fb:FormBuilder, private localHttpClient: LocalHttpClient,
     private constantHelperService: ConstantHelperService, private router: Router) {
@@ -48,18 +52,18 @@ export class SubcategoryComponent implements OnInit {
   }
 
   loadCategory(type:any){
+    this.selectedTypeId = type.value._id;
     this.categories = type.value.categories;
   }
 
   loadSubcategory(data:any){
+    this.selectedCategoryId = data.value._id;
     this.dataSource = data.value.subcategories;
   }
 
   goToDetailView(row:any){
-    let typeId:string = "1";
-    let categoryId: string = "2";
-    let subcategoryId:string= "2"
-    this.router.navigate(['activity','subcategory',typeId, 'detail', categoryId, 'subcategory', subcategoryId]);
+    this.selectedSubCategoryId = row._id;
+    this.router.navigate(['activity','subcategory',this.selectedTypeId, 'detail', this.selectedCategoryId, 'subcategory', this.selectedSubCategoryId]);
   }
 
 }
