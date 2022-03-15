@@ -55,8 +55,11 @@ export class SubcategoryComponent implements OnInit {
     this.dataSource = data.value.subcategories;
   }
 
-  goToDetailView(id:String){
-    this.router.navigate(['activity','category','subcategory' ,id]);
+  goToDetailView(row:any){
+    let typeId:string = "1";
+    let categoryId: string = "2";
+    let subcategoryId:string= "2"
+    this.router.navigate(['activity','subcategory',typeId, 'detail', categoryId, 'subcategory', subcategoryId]);
   }
 
 }
