@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule} from '@angular/material/icon';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,6 +34,10 @@ import { JwtModule } from "@auth0/angular-jwt";
       { path:'signup', component:SignupComponent},
       { path:'activity',
         loadChildren: () => import('./activity/activity.module').then(m=> m.ActivityModule),
+        canActivate:[TokenGuard]
+    },
+      { path:'tracking',
+        loadChildren: () => import('./tracking/tracking.module').then(m=> m.TrackingModule),
         canActivate:[TokenGuard]
     },
       { path: '**', redirectTo: 'login', pathMatch:'full'}

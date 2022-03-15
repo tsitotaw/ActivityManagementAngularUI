@@ -17,6 +17,11 @@
   <button mat-raised-button color="primary" [routerLink]="['activity/subcategory']">
     SubCategory
   </button>
+
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  <button mat-raised-button color="primary" [routerLink]="['tracking']">
+    Tracking
+  </button>
   &nbsp; &nbsp;
   <span *ngIf="constantHelperService.IS_USER_AUTHENTICATED"> Welcome
     {{constantHelperService.LOGGED_IN_USER.firstName}}</span>
