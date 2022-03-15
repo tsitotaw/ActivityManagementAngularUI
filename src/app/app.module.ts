@@ -18,12 +18,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
 import { TokenGuard } from './token-guard.guard';
 import { JwtModule } from "@auth0/angular-jwt";
+import { TrackingComponent } from './tracking/tracking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TrackingComponent
   ],
   imports: [
     BrowserModule,
