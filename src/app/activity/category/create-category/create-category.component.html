@@ -1,0 +1,38 @@
+<div class="type_detail_view">
+    <form [formGroup]="createForm" (ngSubmit)="onCreateTypeClicked()">
+      <fieldset>
+        <legend>Add New Activity Category</legend>
+
+        <div class="type_detail_view"> 
+            <mat-form-field appearance="legacy" class="input-width">
+              <mat-label>Categories</mat-label>
+              <mat-select (selectionChange)="loadCategory($event)">
+                <mat-option *ngFor="let type of types" [value]="type">
+                  {{type.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+  
+        <div class="type_detail_view">
+          <mat-form-field appearance="legacy" class="input-width">
+            <mat-label>name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+        </div>
+  
+        <div class="type_detail_view">
+          <mat-form-field appearance="legacy" class="input-width">
+            <mat-label>code</mat-label>
+            <input matInput formControlName="code">
+          </mat-form-field>
+        </div>
+  
+        <div class="type_detail_view">
+          <button mat-raised-button color="primary" id="updateBtn" type="submit" class="pull-right" class="input-width">
+            Create Activity Type </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  

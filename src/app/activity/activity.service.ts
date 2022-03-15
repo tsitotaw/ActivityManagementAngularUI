@@ -34,4 +34,13 @@ export class ActivityService {
   saveActivityType(typeDetail:[string,string]){
     return this.localHttpClient.post(this.constantHelperService.SERVER_API_URL + "activities", typeDetail);
   }
+
+  saveActivityCategory(typeId:string, categoryDetail:[string,string]){
+    return this.localHttpClient.post(this.constantHelperService.SERVER_API_URL + "activities/" + typeId + "/category" , categoryDetail);
+  }
+
+  getCategoryById(typeId:string, categoryId: string){
+    return this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities/"+ typeId + "/category/" + categoryId);
+  }
+
 }
