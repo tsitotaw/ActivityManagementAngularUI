@@ -36,13 +36,12 @@
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
-            (click)="goToDetailView(row._id);"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
         <button mat-raised-button color="primary" id="loginBtn" type="button" class="pull-right" class="add-type-btn"
-          (click)="goToAddView($event)">
-          Create New Type </button>
+          (click)="goToAddTrackingView($event)">
+          Add New Tracking </button>
 
       </div>
 

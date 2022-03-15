@@ -10,14 +10,18 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { CreateTrackingComponent } from './create/create.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
-  declarations: [TrackingComponent],
+  declarations: [TrackingComponent, CreateTrackingComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: '', component:TrackingComponent}
+      {path: '', component:TrackingComponent},
+      {path: 'create', component:CreateTrackingComponent},
     ]),
     ReactiveFormsModule,
     MatButtonModule,
@@ -26,7 +30,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatInputModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class TrackingModule { }

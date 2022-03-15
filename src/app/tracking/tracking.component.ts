@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivityService } from '../activity/activity.service';
 import { ActivityType } from '../activity/type/ActivityType';
 import { ConstantHelperService } from '../common/constant.service';
+import { ActivityTrackingService } from './activity-tracking.service';
 
 @Component({
   selector: 'app-tracking',
@@ -11,10 +12,10 @@ import { ConstantHelperService } from '../common/constant.service';
   styleUrls: ['./tracking.component.css']
 })
 export class TrackingComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'typedId', 'categoryId'];
+  displayedColumns: string[] = ['title', 'typeId', 'categoryId'];
   dataSource:ActivityType[] = [];
   typeForm!: FormGroup
-  constructor(private fb:FormBuilder, private activityService: ActivityService,
+  constructor(private fb:FormBuilder, private activityTrackingService: ActivityTrackingService,
     private constantHelperService:ConstantHelperService, private router: Router) {
     this.typeForm = fb.group({
       'title': ['']
@@ -22,7 +23,7 @@ export class TrackingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activityService.getAllActivities().subscribe(data => {
+    this.activityTrackingService.getActivityTracking().subscribe(data => {
       this.dataSource = this.transformDataSource(data);
     });
   }
@@ -32,18 +33,18 @@ export class TrackingComponent implements OnInit {
   }
 
   searchType(){
-    this.activityService.getActivityByName(this.typeForm.value.name).subscribe(data => {
-      this.dataSource = this.transformDataSource(data);
-    });
+    // this.activityService.getActivityByName(this.typeForm.value.name).subscribe(data => {
+    //   this.dataSource = this.transformDataSource(data);
+    // });
   }
 
   goToDetailView(id:String){
     this.router.navigate(['activity','type', id]);
   }
 
-  goToAddView($event:any){
-    this.router.navigate(["activity","type","create"]);
-    $event.stopPropagation();
+  goToAddTrackingView($event:any){
+    this.router.navigate(["tracking","create"]);
+    // $event.stopPropagation();
   }
 
 }
