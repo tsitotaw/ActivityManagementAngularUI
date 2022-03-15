@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import { TypeDetailComponent } from './type/detail/detail.component';
 import { CreateTypeComponent } from './type/create-type/create-type.component';
 import {MatSelectModule} from '@angular/material/select';
+import { DetailSubCategoryComponent } from './subcategory/detail/detail-sub-category.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatSelectModule} from '@angular/material/select';
     CategoryComponent,
     SubcategoryComponent,
     TypeDetailComponent,
-    CreateTypeComponent
+    CreateTypeComponent,
+    DetailSubCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import {MatSelectModule} from '@angular/material/select';
       {path: 'type/:id', component:TypeDetailComponent},
       {path: 'category', component:CategoryComponent},
       {path: 'subcategory', component:SubcategoryComponent},
+      {path: 'subcategory/:typeid/detail/:categoryid/subcategory/:subcategoryid', component:DetailSubCategoryComponent},
     ]),
     ReactiveFormsModule,
     MatButtonModule,
