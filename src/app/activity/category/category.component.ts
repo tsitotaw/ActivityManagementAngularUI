@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ConstantHelperService } from 'src/app/common/constant.service';
 import { LocalHttpClient } from 'src/app/local-http-client.service';
 import { ActivityType } from './ActivityCatagory';
@@ -9,63 +10,75 @@ import { ActivityType } from './ActivityCatagory';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
 })
-export class CategoryComponent implements OnInit {
-
+export class CategoryComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', 'code'];
-  dataSource:ActivityType[] = [];
+  dataSource: ActivityType[] = [];
 
   types: any[] = [];
-  selectedTypeId:string="";
-  firstCategory:any={};
-  typeForm!: FormGroup
-  constructor(private fb:FormBuilder, private localHttpClient: LocalHttpClient,
-    private constantHelperService: ConstantHelperService, private router: Router) {
+  selectedTypeId: string = '';
+  firstCategory: any = {};
+  typeForm!: FormGroup;
+  subscription!: Subscription;
+  constructor(
+    private fb: FormBuilder,
+    private localHttpClient: LocalHttpClient,
+    private constantHelperService: ConstantHelperService,
+    private router: Router
+  ) {
     this.typeForm = fb.group({
-      'name': ['']
+      name: [''],
     });
   }
 
   ngOnInit(): void {
-
-    this.localHttpClient.get(this.constantHelperService.SERVER_API_URL + "activities").subscribe(data => {
-      this.types = this.transformDataSource(data);
-      this.firstCategory = {
-        value: {
-          categories: this.types[0].categories
-        }
-      }
-      this.selectedTypeId = this.types[0]._id;
-      this.loadCategory(this.firstCategory);
-    });
-
+    this.subscription = this.localHttpClient
+      .get(this.constantHelperService.SERVER_API_URL + 'activities')
+      .subscribe((data) => {
+        this.types = this.transformDataSource(data);
+        this.firstCategory = {
+          value: {
+            categories: this.types[0].categories,
+          },
+        };
+        this.selectedTypeId = this.types[0]._id;
+        this.loadCategory(this.firstCategory);
+      });
   }
-  loadCategory(data:any){
+  loadCategory(data: any) {
     this.dataSource = data?.value?.categories;
-    this.selectedTypeId = (data?.value?._id) ? data.value._id : this.selectedTypeId;
+    this.selectedTypeId = data?.value?._id
+      ? data.value._id
+      : this.selectedTypeId;
   }
 
-  transformDataSource(data:any){
-    return data["data"];
+  transformDataSource(data: any) {
+    return data['data'];
   }
 
-   onSubmit() {
+  onSubmit() {
     let body: any = {
-      username: "user",
-      password: "1234"
-    }
-
+      username: 'user',
+      password: '1234',
+    };
   }
 
-  goToDetailView(category:any){
-    this.router.navigate(['activity','category',this.selectedTypeId,"detail",category._id]);
+  goToDetailView(category: any) {
+    this.router.navigate([
+      'activity',
+      'category',
+      this.selectedTypeId,
+      'detail',
+      category._id,
+    ]);
   }
 
-
-  goToAddView($event:any){
-    this.router.navigate(["activity","category","create"]);
+  goToAddView($event: any) {
+    this.router.navigate(['activity', 'category', 'create']);
     $event.stopPropagation();
   }
-
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
