@@ -11,17 +11,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { CreateTrackingComponent } from './create/create.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DetailTrackingComponent } from './detail/detail.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [TrackingComponent, CreateTrackingComponent],
+  declarations: [
+    TrackingComponent,
+    CreateTrackingComponent,
+    DetailTrackingComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: '', component:TrackingComponent},
-      {path: 'create', component:CreateTrackingComponent},
+      { path: '', component: TrackingComponent },
+      { path: 'create', component: CreateTrackingComponent },
+      { path: ':id', component: DetailTrackingComponent },
     ]),
     ReactiveFormsModule,
     MatButtonModule,
@@ -32,7 +38,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatTableModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-  ]
+    MatNativeDateModule,
+    MatGridListModule,
+  ],
 })
-export class TrackingModule { }
+export class TrackingModule {}

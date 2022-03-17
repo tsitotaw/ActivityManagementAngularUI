@@ -59,7 +59,7 @@ export class TrackingComponent implements OnInit {
   }
 
   goToDetailView(id: String) {
-    this.router.navigate(['activity', 'type', id]);
+    this.router.navigate(['tracking', id]);
   }
 
   goToAddTrackingView($event: any) {

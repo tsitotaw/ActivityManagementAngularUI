@@ -1,80 +1,80 @@
 <div class="type_form">
-    <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
-      <fieldset>
-        <legend>Activity Type</legend>
-  
-        <!-- <div class="type-search-form-center">
+  <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
+    <fieldset class="form-group border p-3">
+      <legend>Activity Type</legend>
+
+      <!-- <div class="type-search-form-center">
           <mat-form-field appearance="legacy" class="input-width">
             <mat-label>name</mat-label>
             <input matInput formControlName="name">
           </mat-form-field>
-  
+
           <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
             Search </button>
         </div> -->
-        <div class="category-type-center">
-          <!-- <mat-form-field appearance="legacy">
+      <div class="category-type-center">
+        <!-- <mat-form-field appearance="legacy">
             <mat-label>Categories</mat-label>
             <select matNativeControl required (change)="loadCategory($event)">
               <option *ngFor="let type of types">
                 {{type.name}}
               </option>
             </select>
-  
-          </mat-form-field> -->
-          <mat-form-field appearance="legacy">
-            <mat-label>Types</mat-label>
-            <mat-select (selectionChange)="loadCategory($event)">
-              <mat-option *ngFor="let type of types" [value]="type">
-                {{type.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
 
-          </div>
-          <div class="category-type-center">
-          <mat-form-field appearance="legacy">
-            <mat-label>Categories</mat-label>
-            <mat-select (selectionChange)="loadSubcategory($event)">
-              <mat-option *ngFor="let category of categories" [value]="category">
-                {{category.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-  
-        &nbsp;
-        &nbsp;
-        <div class="table-center">
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-            <!--- Note that these columns can be defined in any order.
+          </mat-form-field> -->
+        <mat-form-field appearance="legacy">
+          <mat-label>Types</mat-label>
+          <mat-select (selectionChange)="loadCategory($event)">
+            <mat-option *ngFor="let type of types" [value]="type">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="category-type-center">
+        <mat-form-field appearance="legacy">
+          <mat-label>Categories</mat-label>
+          <mat-select (selectionChange)="loadSubcategory($event)">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      &nbsp;
+      &nbsp;
+      <div class="table-center">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
-  
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-  
-            <!-- Code Column -->
-            <ng-container matColumnDef="code">
-              <th mat-header-cell *matHeaderCellDef> Code </th>
-              <td mat-cell *matCellDef="let element"> {{element.code}} </td>
-            </ng-container>
-            <ng-container matColumnDef="uom">
-                <th mat-header-cell *matHeaderCellDef> uom </th>
-                <td mat-cell *matCellDef="let element"> {{element.uom}} </td>
-              </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
-              (click)="goToDetailView(row);"></tr>
-          </table>
-  
-  
-        </div>
-  
-      </fieldset>
-  
-    </form>
-  </div>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Code Column -->
+          <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef> Code </th>
+            <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+          </ng-container>
+          <ng-container matColumnDef="uom">
+            <th mat-header-cell *matHeaderCellDef> uom </th>
+            <td mat-cell *matCellDef="let element"> {{element.uom}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
+            (click)="goToDetailView(row);"></tr>
+        </table>
+
+
+      </div>
+
+    </fieldset>
+
+  </form>
+</div>

@@ -1,6 +1,6 @@
 <div class="type_form">
   <form [formGroup]="typeForm">
-    <fieldset>
+    <fieldset class="form-group border p-3">
       <legend>Activity Type</legend>
 
       <div class="type-search-form-center">
@@ -36,7 +36,8 @@
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"
+            (click)="goToDetailView(row._id);"></tr>
         </table>
 
         <button mat-raised-button color="primary" id="loginBtn" type="button" class="pull-right" class="add-type-btn"

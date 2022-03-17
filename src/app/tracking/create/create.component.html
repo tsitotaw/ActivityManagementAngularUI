@@ -1,6 +1,6 @@
 <div class="type_form">
   <form [formGroup]="typeForm">
-    <fieldset>
+    <fieldset class="form-group border p-3">
       <legend> Track Activities </legend>
 
       <div class="category-type-center">
@@ -52,7 +52,7 @@
             <input matInput formControlName="quantity" type="number" id="{{'quantity'+i}}">
           </mat-form-field>
           &nbsp;&nbsp;
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="input-width">
             <mat-label>Tracking Date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="trackingDate" id="{{'trackingDate'+i}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

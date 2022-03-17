@@ -1,0 +1,78 @@
+<div class="type_form">
+  <form>
+    <fieldset class="form-group border p-3">
+      <legend> Track Activities Detail </legend>
+      <div class="container">
+        <div class="row">
+          <div class="col col-md-2">
+            Tracking Title
+          </div>
+          <div class="col-md-4">
+            {{trackingDetail.title}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-md-2">
+            Activity Type
+          </div>
+          <div class="col col-md-4">
+            {{getTypeName(trackingDetail.typeId)}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            Activity Category
+          </div>
+          <div class="col-md-4">
+            {{getCategoryName(trackingDetail.typeId,trackingDetail.categoryId)}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Detail</div>
+          <div class="col-md-10">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <!-- Benficiary Column -->
+              <ng-container matColumnDef="beneficiary">
+                <th mat-header-cell *matHeaderCellDef> Beneficiary </th>
+                <td mat-cell *matCellDef="let element"> {{element.beneficiary}} </td>
+              </ng-container>
+
+              <!-- Sub Category Column -->
+              <ng-container matColumnDef="subcategoryId">
+                <th mat-header-cell *matHeaderCellDef> SubCategory </th>
+                <td mat-cell *matCellDef="let element"> {{element.subcategoryId}} </td>
+              </ng-container>
+
+              <!-- Quantity Column -->
+              <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+              </ng-container>
+
+              <!-- Quantity Column -->
+              <ng-container matColumnDef="trackingDate">
+                <th mat-header-cell *matHeaderCellDef> Tracking Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.trackingDate}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"></tr>
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div>
+        <button mat-raised-button color="primary" id="loginBtn" class="pull-right" class="input-width"
+          (click)="backToList()">
+          Back </button>
+      </div>
+
+    </fieldset>
+
+  </form>
+</div>
