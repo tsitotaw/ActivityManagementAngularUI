@@ -1,5 +1,5 @@
 <div class="type_form">
-  <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="typeForm">
     <fieldset>
       <legend> Track Activities </legend>
 
@@ -29,34 +29,57 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+
       </div>
       <div formArrayName="details" *ngFor="let t of details.controls; let i = index">
-        <mat-form-field appearance="fill" class="input-width">
-          <mat-label>Beneficiary</mat-label>
-          <input matInput formControlName="beneficiary" id="{{'beneficiary'+i}}">
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="input-width">
-          <mat-label>Quantity</mat-label>
-          <input matInput formControlName="quantity" type="number" id="{{'quantity'+i}}">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Tracking Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="trackingDate" id="{{'trackingDate'+i}}">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-icon class="delete-btn" (click)="deleteTrackingDetail(i)">
-          delete_forever</mat-icon>
+        <div [formGroupName]="i" class="row">
+          <mat-form-field appearance="fill" class="input-width">
+            <mat-label>Beneficiary</mat-label>
+            <input matInput formControlName="beneficiary" id="{{'beneficiary'+i}}">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="fill" class="input-width">
+            <mat-label>Sub Categories</mat-label>
+            <mat-select formControlName="subcategoryId" id="{{'subcategory'+i}}">
+              <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory">
+                {{subcategory.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="fill" class="input-width">
+            <mat-label>Quantity</mat-label>
+            <input matInput formControlName="quantity" type="number" id="{{'quantity'+i}}">
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>Tracking Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="trackingDate" id="{{'trackingDate'+i}}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          &nbsp;&nbsp;
+          <!-- <mat-icon class="delete-btn" (click)="deleteTrackingDetail(i)">
+            delete_forever</mat-icon> -->
+          <button mat-mini-fab (click)="deleteTrackingDetail(i)" class="btn_add_more" color="primary">
+            <mat-icon class="remove-course-btn ">remove</mat-icon>
+          </button>
+
+        </div>
 
       </div>
-
-      <button mat-mini-fab (click)="addLesson()">
-        <mat-icon class="add-course-btn">add</mat-icon>
-      </button>
+      <div>
+        <button mat-mini-fab (click)="addLesson()" class="btn_add_more">
+          <mat-icon class="add-course-btn ">add</mat-icon>
+        </button>
+      </div>
+      &nbsp;&nbsp;
+      &nbsp;&nbsp;
       &nbsp;
       &nbsp;
       <div>
-        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width"
+          [disabled]="!typeForm.valid" (click)="saveTracking()">
           Add Tracking </button>
       </div>
 

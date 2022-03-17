@@ -26,13 +26,13 @@
           <!-- Code Column -->
           <ng-container matColumnDef="typeId">
             <th mat-header-cell *matHeaderCellDef> Type </th>
-            <td mat-cell *matCellDef="let element"> {{element.typeId}} </td>
+            <td mat-cell *matCellDef="let element"> {{getTypeName(element.typeId)}} </td>
           </ng-container>
 
           <!-- Code Column -->
           <ng-container matColumnDef="categoryId">
             <th mat-header-cell *matHeaderCellDef> Category </th>
-            <td mat-cell *matCellDef="let element"> {{element.categoryId}} </td>
+            <td mat-cell *matCellDef="let element"> {{getCategoryName(element.typeId, element.categoryId)}} </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

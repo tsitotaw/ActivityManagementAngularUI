@@ -60,7 +60,7 @@ export class TypeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.subscription2.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
+    if (this.subscription2) this.subscription2.unsubscribe();
   }
 }

@@ -17,5 +17,8 @@ tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
 }
 .input-width {
-  width: 400px;
+  width: 200px;
+}
+.btn_add_more {
+  margin-left: 20px;
 }
