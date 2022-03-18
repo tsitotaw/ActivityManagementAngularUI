@@ -57,7 +57,8 @@
       </div>
       &nbsp;&nbsp;&nbsp;
       <div>
-        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width">
+        <button mat-raised-button color="primary" id="loginBtn" type="submit" class="pull-right" class="input-width"
+          [disabled]="!signUpForm.valid">
           Signup </button>
       </div>
     </fieldset>

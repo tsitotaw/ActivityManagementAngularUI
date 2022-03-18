@@ -83,4 +83,9 @@ export class SubcategoryComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  goToAddView($event: any) {
+    this.router.navigate(['activity', 'subcategory', 'create']);
+    $event.stopPropagation();
+  }
 }

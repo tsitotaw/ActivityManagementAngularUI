@@ -6,7 +6,7 @@
 
       <div class="category-type-center">
         <mat-form-field appearance="legacy">
-          <mat-label>Categories</mat-label>
+          <mat-label>Types</mat-label>
           <mat-select (selectionChange)="loadCategory($event)">
             <mat-option *ngFor="let type of types" [value]="type">
               {{type.name}}
